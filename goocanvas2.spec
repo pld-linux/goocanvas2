@@ -46,7 +46,7 @@ Group:		X11/Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 Requires:	cairo-devel >= 1.10.0
 Requires:	glib2-devel >= 1:2.28.0
-Requires:	gtk+2-devel >= 3.0.0
+Requires:	gtk+3-devel >= 3.0.0
 
 %description devel
 Header files for goocanvas.
