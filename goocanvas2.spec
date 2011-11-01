@@ -1,12 +1,12 @@
 Summary:	Cairo/GTK+3 Canvas
 Summary(pl.UTF-8):	Płótno Cairo/GTK+3
 Name:		goocanvas2
-Version:	2.0.0
+Version:	2.0.1
 Release:	1
 License:	LGPL v2
 Group:		X11/Libraries
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/goocanvas/2.0/goocanvas-%{version}.tar.bz2
-# Source0-md5:	756c0b592e47dc5bb5dabc1388239876
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/goocanvas/2.0/goocanvas-%{version}.tar.xz
+# Source0-md5:	78a98fa526ce73a77a454711c96f07a2
 URL:		http://live.gnome.org/GooCanvas
 BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake >= 1:1.7
@@ -14,10 +14,16 @@ BuildRequires:	cairo-devel >= 1.10.0
 BuildRequires:	docbook-dtd412-xml
 BuildRequires:	gettext-devel
 BuildRequires:	glib2-devel >= 1:2.28.0
+BuildRequires:	gobject-introspection-devel >= 0.6.7
 BuildRequires:	gtk+3-devel >= 3.0.0
 BuildRequires:	gtk-doc >= 1.8
 BuildRequires:	libtool
 BuildRequires:	pkgconfig
+BuildRequires:	python-pygobject-devel >= 2.28
+BuildRequires:	rpm-pythonprov
+BuildRequires:	rpmbuild(macros) >= 1.219
+BuildRequires:	tar >= 1:1.22
+BuildRequires:	xz
 Requires:	cairo >= 1.10.0
 Requires:	glib2 >= 1:2.28.0
 Requires:	gtk+3 >= 3.0.0
@@ -89,6 +95,19 @@ Example programs using goocanvas library.
 %description examples -l pl.UTF-8
 Przykładowe programy używające biblioteki goocanvas.
 
+%package -n python-%{name}
+Summary:	Python binding for GooCanvas 2.x library
+Summary(pl.UTF-8):	Wiązania Pythona do biblioteki GooCanvas 2.x
+Group:		Development/Languages/Python
+Requires:	%{name} = %{version}-%{release}
+Requires:	python-pygobject >= 2.28
+
+%description -n python-%{name}
+Python binding for GooCanvas 2.x library.
+
+%description -n python-%{name} -l pl.UTF-8
+Wiązania Pythona do biblioteki GooCanvas 2.x.
+
 %prep
 %setup -q -n goocanvas-%{version}
 
@@ -100,6 +119,7 @@ Przykładowe programy używające biblioteki goocanvas.
 %{__autoheader}
 %{__automake}
 %configure \
+	--disable-silent-rules \
 	--enable-gtk-doc \
 	--with-html-dir=%{_gtkdocdir}
 %{__make}
@@ -119,6 +139,7 @@ cp demo/*.c demo/*.h demo/*.png $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version
 %{__rm} $RPM_BUILD_ROOT%{_libdir}/lib*.la
 
 %find_lang %{name}
+%py_postclean
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -131,11 +152,13 @@ rm -rf $RPM_BUILD_ROOT
 %doc AUTHORS ChangeLog NEWS README TODO
 %attr(755,root,root) %{_libdir}/libgoocanvas-2.0.so.*.*.*
 %attr(755,root,root) %ghost %{_libdir}/libgoocanvas-2.0.so.9
+%{_libdir}/girepository-1.0/GooCanvas-2.0.typelib
 
 %files devel
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libgoocanvas-2.0.so
 %{_includedir}/goocanvas-2.0
+%{_datadir}/gir-1.0/GooCanvas-2.0.gir
 %{_pkgconfigdir}/goocanvas-2.0.pc
 
 %files static
@@ -149,3 +172,7 @@ rm -rf $RPM_BUILD_ROOT
 %files examples
 %defattr(644,root,root,755)
 %{_examplesdir}/%{name}-%{version}
+
+%files -n python-%{name}
+%defattr(644,root,root,755)
+%{py_sitedir}/gi/overrides/GooCanvas.py[co]
