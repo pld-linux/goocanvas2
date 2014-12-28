@@ -12,7 +12,7 @@ BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake >= 1:1.7
 BuildRequires:	cairo-devel >= 1.10.0
 BuildRequires:	docbook-dtd412-xml
-BuildRequires:	gettext-devel
+BuildRequires:	gettext-tools
 BuildRequires:	glib2-devel >= 1:2.28.0
 BuildRequires:	gobject-introspection-devel >= 0.6.7
 BuildRequires:	gtk+3-devel >= 3.0.0
