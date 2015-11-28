@@ -2,7 +2,7 @@ Summary:	Cairo/GTK+3 Canvas
 Summary(pl.UTF-8):	Płótno Cairo/GTK+3
 Name:		goocanvas2
 Version:	2.0.2
-Release:	2
+Release:	3
 License:	LGPL v2
 Group:		X11/Libraries
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/goocanvas/2.0/goocanvas-%{version}.tar.xz
