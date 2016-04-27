@@ -2,7 +2,7 @@ Summary:	Cairo/GTK+3 Canvas
 Summary(pl.UTF-8):	Płótno Cairo/GTK+3
 Name:		goocanvas2
 Version:	2.0.2
-Release:	3
+Release:	4
 License:	LGPL v2
 Group:		X11/Libraries
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/goocanvas/2.0/goocanvas-%{version}.tar.xz
@@ -77,6 +77,9 @@ Summary:	goocanvas API documentation
 Summary(pl.UTF-8):	Dokumentacja API goocanvas
 Group:		Documentation
 Requires:	gtk-doc-common
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description apidocs
 goocanvas API documentation.
@@ -88,6 +91,9 @@ Dokumentacja API goocanvas.
 Summary:	Example programs using goocanvas library
 Summary(pl.UTF-8):	Przykładowe programy używające biblioteki goocanvas
 Group:		X11/Development/Libraries
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description examples
 Example programs using goocanvas library.
