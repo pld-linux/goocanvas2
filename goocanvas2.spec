@@ -1,25 +1,25 @@
 Summary:	Cairo/GTK+3 Canvas
 Summary(pl.UTF-8):	Płótno Cairo/GTK+3
 Name:		goocanvas2
-Version:	2.0.2
-Release:	4
+Version:	2.0.4
+Release:	1
 License:	LGPL v2
 Group:		X11/Libraries
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/goocanvas/2.0/goocanvas-%{version}.tar.xz
-# Source0-md5:	26740994cfa5e57dfb70d40c4ec55200
+# Source0-md5:	a603f9459d29348b88ba3592bca03274
 URL:		http://live.gnome.org/GooCanvas
 BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake >= 1:1.7
 BuildRequires:	cairo-devel >= 1.10.0
 BuildRequires:	docbook-dtd412-xml
-BuildRequires:	gettext-tools
+BuildRequires:	gettext-tools >= 0.19.4
 BuildRequires:	glib2-devel >= 1:2.28.0
 BuildRequires:	gobject-introspection-devel >= 0.6.7
 BuildRequires:	gtk+3-devel >= 3.0.0
-BuildRequires:	gtk-doc >= 1.8
+BuildRequires:	gtk-doc >= 1.16
 BuildRequires:	libtool
 BuildRequires:	pkgconfig
-BuildRequires:	python-pygobject-devel >= 2.28
+BuildRequires:	python-pygobject3-devel >= 3
 BuildRequires:	rpm-pythonprov
 BuildRequires:	rpmbuild(macros) >= 1.219
 BuildRequires:	tar >= 1:1.22
@@ -106,7 +106,7 @@ Summary:	Python binding for GooCanvas 2.x library
 Summary(pl.UTF-8):	Wiązania Pythona do biblioteki GooCanvas 2.x
 Group:		Development/Languages/Python
 Requires:	%{name} = %{version}-%{release}
-Requires:	python-pygobject >= 2.28
+Requires:	python-pygobject3 >= 3.0
 
 %description -n python-%{name}
 Python binding for GooCanvas 2.x library.
