@@ -5,9 +5,9 @@ Version:	2.0.4
 Release:	1
 License:	LGPL v2
 Group:		X11/Libraries
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/goocanvas/2.0/goocanvas-%{version}.tar.xz
+Source0:	https://download.gnome.org/sources/goocanvas/2.0/goocanvas-%{version}.tar.xz
 # Source0-md5:	a603f9459d29348b88ba3592bca03274
-URL:		http://live.gnome.org/GooCanvas
+URL:		https://wiki.gnome.org/Projects/GooCanvas
 BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake >= 1:1.7
 BuildRequires:	cairo-devel >= 1.10.0
@@ -21,7 +21,7 @@ BuildRequires:	libtool
 BuildRequires:	pkgconfig
 BuildRequires:	python-pygobject3-devel >= 3
 BuildRequires:	rpm-pythonprov
-BuildRequires:	rpmbuild(macros) >= 1.219
+BuildRequires:	rpmbuild(macros) >= 1.752
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	xz
 Requires:	cairo >= 1.10.0
@@ -77,9 +77,7 @@ Summary:	goocanvas API documentation
 Summary(pl.UTF-8):	Dokumentacja API goocanvas
 Group:		Documentation
 Requires:	gtk-doc-common
-%if "%{_rpmversion}" >= "5"
-BuildArch:	noarch
-%endif
+%{?noarchpackage}
 
 %description apidocs
 goocanvas API documentation.
@@ -91,9 +89,7 @@ Dokumentacja API goocanvas.
 Summary:	Example programs using goocanvas library
 Summary(pl.UTF-8):	Przykładowe programy używające biblioteki goocanvas
 Group:		X11/Development/Libraries
-%if "%{_rpmversion}" >= "5"
-BuildArch:	noarch
-%endif
+%{?noarchpackage}
 
 %description examples
 Example programs using goocanvas library.
