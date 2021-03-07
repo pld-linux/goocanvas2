@@ -77,7 +77,7 @@ Summary:	goocanvas API documentation
 Summary(pl.UTF-8):	Dokumentacja API goocanvas
 Group:		Documentation
 Requires:	gtk-doc-common
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description apidocs
 goocanvas API documentation.
@@ -89,7 +89,7 @@ Dokumentacja API goocanvas.
 Summary:	Example programs using goocanvas library
 Summary(pl.UTF-8):	Przykładowe programy używające biblioteki goocanvas
 Group:		X11/Development/Libraries
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description examples
 Example programs using goocanvas library.
