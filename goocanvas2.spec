@@ -1,12 +1,17 @@
+#
+# Conditional build:
+%bcond_with	python		# build python 2 module
+#
 Summary:	Cairo/GTK+3 Canvas
 Summary(pl.UTF-8):	Płótno Cairo/GTK+3
 Name:		goocanvas2
 Version:	2.0.4
-Release:	2
+Release:	3
 License:	LGPL v2
 Group:		X11/Libraries
 Source0:	https://download.gnome.org/sources/goocanvas/2.0/goocanvas-%{version}.tar.xz
 # Source0-md5:	a603f9459d29348b88ba3592bca03274
+Patch0:		gcc14.patch
 URL:		https://wiki.gnome.org/Projects/GooCanvas
 BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake >= 1:1.7
@@ -19,7 +24,7 @@ BuildRequires:	gtk+3-devel >= 3.0.0
 BuildRequires:	gtk-doc >= 1.16
 BuildRequires:	libtool
 BuildRequires:	pkgconfig
-BuildRequires:	python-pygobject3-devel >= 3
+%{?with_python:BuildRequires:	python-pygobject3-devel >= 3}
 BuildRequires:	rpm-pythonprov
 BuildRequires:	rpmbuild(macros) >= 1.752
 BuildRequires:	tar >= 1:1.22
@@ -112,17 +117,13 @@ Wiązania Pythona do biblioteki GooCanvas 2.x.
 
 %prep
 %setup -q -n goocanvas-%{version}
+%patch -P0 -p1
 
 %build
-%{__gtkdocize}
-%{__libtoolize}
-%{__aclocal}
-%{__autoconf}
-%{__autoheader}
-%{__automake}
 %configure \
 	--disable-silent-rules \
 	--enable-gtk-doc \
+	%{__enable_disable python} \
 	--with-html-dir=%{_gtkdocdir}
 %{__make}
 
@@ -175,6 +176,8 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %{_examplesdir}/%{name}-%{version}
 
+%if %{with python}
 %files -n python-%{name}
 %defattr(644,root,root,755)
 %{py_sitedir}/gi/overrides/GooCanvas.py[co]
+%endif
